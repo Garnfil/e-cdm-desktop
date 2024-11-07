@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student School Work Grade</title>
+
+    <link rel="stylesheet" href="../../public/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="../../public/assets/vendor/css/core.css">
+    <link rel="stylesheet" href="../../public/assets/vendor/css/theme-default.css">
+    <link rel="stylesheet" href="../../public/assets/css/demo.css">
+
+    <link rel="stylesheet" href="../../public/assets/vendor/css/pages/page-auth.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <script src="../../public/assets/vendor/js/helpers.js"></script>
+    <!-- Config -->
+    <script href="../../public/assets/js/config.js"></script>
+
+</head>
+
+<body class="bg-white">
+    <div class="container-fluid my-3 bg-white">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="../../public/assets/img/cdm-logo.png" alt="" style="width: 50px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="instructor-dashboard.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="instructor-classes.html">Classes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="instructor-reports.html">Reports</a>
+                        </li>
+                    </ul>
+                    <div class="nav-item navbar-dropdown dropdown-user dropdown">
+                        <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
+                            data-bs-toggle="dropdown">
+                            <div class="avatar avatar-online">
+                                <img src="../../public/assets/img/avatars/1.png" alt
+                                    class="w-px-40 h-auto rounded-circle" />
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0 me-3">
+                                            <div class="avatar avatar-online">
+                                                <img src="../../public/assets/img/avatars/1.png" alt
+                                                    class="w-px-40 h-auto rounded-circle" />
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <span class="fw-semibold d-block">John Doe</span>
+                                            <small class="text-muted">Admin</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="bx bx-user me-2"></i>
+                                    <span class="align-middle">My Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="bx bx-cog me-2"></i>
+                                    <span class="align-middle">Settings</span>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
+                            <li>
+                                <a id="logout-btn" class="dropdown-item" href="#">
+                                    <i class="bx bx-power-off me-2"></i>
+                                    <span class="align-middle">Log Out</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="d-flex justify-content-end my-2">
+            <a href="" id="back-to-class-btn" class="btn btn-primary">Back to Class</a>
+        </div>
+
+        <div class="card my-2">
+            <div class="card-body">
+                <table style="width: 100%;" cellpadding="5">
+                    <tbody>
+                        <tr>
+                            <td width='20%'>Student Name:</td>
+                            <td style="font-weight: bold;">James Benedict Garnfil</td>
+                        </tr>
+                        <tr>
+                            <td width='20%'>Institute:</td>
+                            <td style="font-weight: bold;">Institute Of Computer Studies</td>
+                        </tr>
+                        <tr>
+                            <td width='20%'>Course:</td>
+                            <td style="font-weight: bold;">Bachelor of Information Technology</td>
+                        </tr>
+                        <tr>
+                            <td width='20%'>Semester:</td>
+                            <td style="font-weight: bold;">1st Semester</td>
+                        </tr>
+                        <tr>
+                            <td width='20%'>Subject:</td>
+                            <td style="font-weight: bold;">IT CAPSTONE</td>
+                        </tr>
+                        <tr>
+                            <td width='20%'>Section:</td>
+                            <td style="font-weight: bold;">4H</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-bordered table-striped text-wrap w-100">
+                    <thead>
+                        <tr>
+                            <th>School Work Type</th>
+                            <th>Grade (%)</th>
+                            <th>Rubric Percentage</th>
+                            <th width="30">Total of Submitted Works</th>
+                            <th>Actions</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="grades-table">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="school-works-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <form action="#" id="submitted-works-form" method="POST">
+                <input type="hidden" name="school_work_type" id="school-work-type-field">
+                <input type="hidden" name="student_id" id="student-id-field">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel3">Submitted Works</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-2" id="school-works-fieldset">
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- You can also require other files to run in this process -->
+    <script src="../../renderer.js"></script>
+    <script src="../../public/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../../public/assets/vendor/libs/popper/popper.js"></script>
+    <script src="../../public/assets/vendor/js/bootstrap.js"></script>
+    <script src="../../public/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="../../public/assets/vendor/js/menu.js"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="../../public/assets/js/main.js"></script>
+    <script src="../../public/assets/js/custom.js"></script>
+    <script>
+        var studentId = 0;  // Replace with actual student ID
+        var classId = 0;    // Replace with actual class ID
+        var session = {};
+
+        document.addEventListener("DOMContentLoaded", function (e) {
+            const queryParams = new URLSearchParams(window.location.search);
+            session = JSON.parse(localStorage.getItem('session'));
+            studentId = queryParams.get('student_id');
+            classId = queryParams.get('class_id');
+
+            const backToClassBtn = document.querySelector('#back-to-class-btn');
+            backToClassBtn.href = `classroom-details.html?id=${classId}`;
+
+            // Call the function to fetch and display data
+            fetchGrades();
+        })
+
+        async function fetchGrades() {
+            const response = await fetch(`http://192.168.56.1:8000/api/students/${studentId}/classes/${classId}/school-work-grades`, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${session?.token}`,
+                }
+            });
+            const data = await response.json();
+            displaySchoolWorkGrades(data);
+        }
+
+        const fetchClassStudentSchoolWorks = async (type) => {
+
+            const response = await fetch(`http://192.168.56.1:8000/api/classes/${classId}/students/${studentId}/school-works?type=${type}`, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${session?.token}`,
+                }
+            });
+
+            const data = await response.json();
+            displaySchoolWorkFields(data, type, studentId);
+        }
+
+        const displaySchoolWorkFields = (data, type, student_id) => {
+
+            const schoolWorkFieldSet = document.querySelector('#school-works-fieldset');
+            let output = "";
+            data.school_works.forEach((school_work, index) => {
+                const studentSubmission = data.student_submissions.find(submission => submission.school_work_id == school_work.id);
+                output += `<div class="col-lg-4 mb-3">
+                                <label for="emailLarge" class="form-label">${school_work.title}</label>
+                                <input type="hidden" name="submissions[${index}][school_work_id]" value="${school_work.id}" />
+                                <div class="input-group">
+                                    <input type="integer" name="submissions[${index}][score]" class="form-control" placeholder="Score" value="${studentSubmission ? studentSubmission.score : 0}" />
+                                    <span class="input-group-text">/ ${school_work.points}</span>
+                                </div>
+                            </div>`;
+            });
+
+            schoolWorkFieldSet.innerHTML = output;
+        }
+
+        const displaySchoolWorkGrades = (data) => {
+            const gradesTable = document.getElementById('grades-table');
+            gradesTable.innerHTML = `
+                <tr>
+                    <td>Assignments Grade</td>
+                    <td>${data.grades.assignment}</td>
+                    <td>${data.rubrics.assignment_percentage}%</td>
+                    <td>${data.submitted_counts.assignment}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm school-works-modal-btn" data-bs-toggle="modal" data-type="assignment" data-bs-target="#school-works-modal">
+                            Submitted School Works
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Quizzes Grade</td>
+                    <td>${data.grades.quizzes}</td>
+                    <td>${data.rubrics.quiz_percentage}%</td>
+                    <td>${data.submitted_counts.quiz}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm school-works-modal-btn" data-bs-toggle="modal" data-type="quiz" data-bs-target="#school-works-modal">
+                            Submitted School Works
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Activities Grade</td>
+                    <td>${data.grades.activities}</td>
+                    <td>${data.rubrics.activity_percentage}%</td>
+                    <td>${data.submitted_counts.activity}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm school-works-modal-btn" data-bs-toggle="modal" data-type="activity" data-bs-target="#school-works-modal">
+                            Submitted School Works
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Exams Grade</td>
+                    <td>${data.grades.exams}</td>
+                    <td>${data.rubrics.exam_percentage}%</td>
+                    <td>${data.submitted_counts.exam}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm school-works-modal-btn" data-bs-toggle="modal" data-type="exam" data-bs-target="#school-works-modal">
+                            Submitted School Works
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Attendance Grade</td>
+                    <td contenteditable="true">${data.grades.attendance}</td>
+                    <td>${data.rubrics.attendance_percentage}%</td>
+                    <td>--</td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>Other Performances Grade</td>
+                    <td contenteditable="true">${data.grades.other_performances}</td>
+                    <td>${data.rubrics.other_performance_percentage}%</td>
+                    <td>--</td>
+                    <td>
+                        
+                    </td>
+                </tr>
+            `;
+        }
+
+        $('#school-works-modal').on('show.bs.modal', function (e) {
+            const dataType = $(e.relatedTarget).data('type'); // Get the data-type attribute
+            const school_work_type = document.querySelector('#school-work-type-field');
+            school_work_type.value = dataType;
+            fetchClassStudentSchoolWorks(dataType);
+        })
+
+        $('#submitted-works-form').on('submit', async function (e) {
+            e.preventDefault();
+            const session = JSON.parse(localStorage.getItem('session'));
+            const school_work_type = document.querySelector('#school-work-type-field').value;
+
+
+            try {
+                let form = new FormData(e.target);
+                form.append('student_id', studentId);
+                form.append('class_id', classId);
+
+                const response = await fetch(`http://192.168.56.1:8000/api/student-school-works/submissions-with-grade/${school_work_type}`, {
+                    method: "POST",
+                    headers: {
+                        'Accept': "application/json",
+                        'Authorization': `Bearer ${session?.token}`,
+                    },
+                    body: form
+                });
+
+                const data = await response.json();
+                fetchGrades();
+                toastr.success("Score Submitted Successfully");
+            } catch (error) {
+                toastr.error("Something wen't wrong when submitting the scores.");
+            }
+        });
+
+    </script>
+</body>
+
+</html>

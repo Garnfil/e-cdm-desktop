@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;"> -->
+    <link href="../styles.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../public/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="../../public/assets/vendor/css/core.css">
+    <link rel="stylesheet" href="../../public/assets/vendor/css/theme-default.css">
+    <link rel="stylesheet" href="../../public/assets/css/demo.css">
+
+    <link rel="stylesheet" href="../../public/assets/vendor/css/pages/page-auth.css" />
+
+    <!-- CSS CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <script src="../../public/assets/vendor/js/helpers.js"></script>
+    <!-- Config -->
+    <script href="../../public/assets/js/config.js"></script>
+
+
+
+    <title>E-CDM</title>
+</head>
+
+<body>
+    <div class="container-xxl">
+        <div class="authentication-wrapper authentication-basic container-p-y">
+            <div class="authentication-inner">
+                <!-- Register -->
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Logo -->
+                        <div class="app-brand justify-content-center">
+                            <a href="index.html" class="app-brand-link gap-2">
+                                <span class="app-brand-logo demo">
+
+                                </span>
+                                <span class="app-brand-text demo text-body fw-bolder">E-CDM</span>
+                            </a>
+                        </div>
+                        <!-- /Logo -->
+                        <h4 class="mb-2">Welcome to E-CDM! 👋</h4>
+                        <p class="mb-4">Please sign-in to your account.</p>
+
+                        <div id="instructor-login-form" class="mb-3">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email or Username</label>
+                                <input type="text" class="form-control" id="username" name="username"
+                                    placeholder="username" autofocus />
+                            </div>
+                            <div class="mb-3 form-password-toggle">
+                                <div class="input-group input-group-merge">
+                                    <input type="password" id="password" class="form-control" name="password"
+                                        placeholder="*****" aria-describedby="password" />
+                                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <button class="btn btn-primary d-grid w-100" id="instructor-login-btn">Sign in</button>
+                            </div>
+                        </div>
+
+                        <p class="text-center">
+                            <span>Login as</span>
+                            <a href="auth-register-basic.html">
+                                <span>Admin</span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <!-- /Register -->
+            </div>
+        </div>
+    </div>
+
+    <!-- You can also require other files to run in this process -->
+    <script src="../../renderer.js"></script>
+    <script src="../../public/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../../public/assets/vendor/libs/popper/popper.js"></script>
+    <script src="../../public/assets/vendor/js/bootstrap.js"></script>
+    <script src="../../public/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="../../public/assets/vendor/js/menu.js"></script>
+    <!-- endbuild -->
+
+    <!-- CDN JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="../../public/assets/js/main.js"></script>
+    <script src="../../public/assets/js/custom.js"></script>
+    <script src="../viewscripts/instructor-login/instructor_login.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "desktop_app",
+  "version": "1.0.0",
+  "description": "Desktop App for E-CDM",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "James Garnfil",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^33.0.2"
+  }
+}

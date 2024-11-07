@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classroom Details</title>
+
+    <link rel="stylesheet" href="../../public/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="../../public/assets/vendor/css/core.css">
+    <link rel="stylesheet" href="../../public/assets/vendor/css/theme-default.css">
+    <link rel="stylesheet" href="../../public/assets/css/demo.css">
+
+    <link rel="stylesheet" href="../../public/assets/vendor/css/pages/page-auth.css" />
+
+    <script src="../../public/assets/vendor/js/helpers.js"></script>
+    <!-- Config -->
+    <script href="../../public/assets/js/config.js"></script>
+</head>
+
+<body class="bg-white">
+    <div class="container-fluid my-3 bg-white">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="../../public/assets/img/cdm-logo.png" alt="" style="width: 50px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="instructor-dashboard.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="instructor-classes.html">Classes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="instructor-reports.html">Reports</a>
+                        </li>
+                    </ul>
+                    <div class="nav-item navbar-dropdown dropdown-user dropdown">
+                        <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
+                            data-bs-toggle="dropdown">
+                            <div class="avatar avatar-online">
+                                <img src="../../public/assets/img/avatars/1.png" alt
+                                    class="w-px-40 h-auto rounded-circle" />
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0 me-3">
+                                            <div class="avatar avatar-online">
+                                                <img src="../../public/assets/img/avatars/1.png" alt
+                                                    class="w-px-40 h-auto rounded-circle" />
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <span class="fw-semibold d-block">John Doe</span>
+                                            <small class="text-muted">Admin</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="bx bx-user me-2"></i>
+                                    <span class="align-middle">My Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="bx bx-cog me-2"></i>
+                                    <span class="align-middle">Settings</span>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
+                            <li>
+                                <a id="logout-btn" class="dropdown-item" href="#">
+                                    <i class="bx bx-power-off me-2"></i>
+                                    <span class="align-middle">Log Out</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="my-4">
+            <div>
+                <h3 id="class-title-text"></h3>
+                <div class="card my-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <table style="width: 100%;" cellpadding="5">
+                                    <tbody>
+                                        <tr>
+                                            <td width='20%'>Class Code:</td>
+                                            <td style="font-weight: bold;" id="class-code-text">JEOQJwZ3EL4e</td>
+                                        </tr>
+                                        <tr>
+                                            <td width='20%'>Current Assessment:</td>
+                                            <td style="font-weight: bold;" id="class-current-assessment-text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width='20%'>Semester:</td>
+                                            <td style="font-weight: bold;" id="class-semester-text"></td>
+                                        </tr>
+                                        <tr>
+                                            <td width='20%'>Subject:</td>
+                                            <td style="font-weight: bold;" id="class-subject-text"></td>
+                                        </tr>
+                                        <tr>
+                                            <td width='20%'>Section:</td>
+                                            <td style="font-weight: bold;" id="class-section-text"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
+                            data-bs-target="#navs-students" aria-controls="navs-students" aria-selected="true">
+                            Students
+                        </button>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                            data-bs-target="#navs-grade-sheets" aria-controls="navs-grade-sheets" aria-selected="false">
+                            Grade Sheets
+                        </button>
+                    </li> -->
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="navs-students" role="tabpanel">
+                        <table class="table table-striped" id="students-table">
+                            <thead>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Final Grade</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- <div class="tab-pane fade" id="navs-grade-sheets" role="tabpanel">
+                        <p>
+                            Donut dragée jelly pie halvah. Danish gingerbread bonbon cookie wafer candy oat cake ice
+                            cream. Gummies halvah tootsie roll muffin biscuit icing dessert gingerbread. Pastry ice
+                            cream
+                            cheesecake fruitcake.
+                        </p>
+                        <p class="mb-0">
+                            Jelly-o jelly beans icing pastry cake cake lemon drops. Muffin muffin pie tiramisu halvah
+                            cotton candy liquorice caramels.
+                        </p>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- You can also require other files to run in this process -->
+    <script src="../../renderer.js"></script>
+    <script src="../../public/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../../public/assets/vendor/libs/popper/popper.js"></script>
+    <script src="../../public/assets/vendor/js/bootstrap.js"></script>
+    <script src="../../public/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="../../public/assets/vendor/js/menu.js"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+
+    <!-- Main JS -->
+    <script src="../../public/assets/js/main.js"></script>
+    <script src="../../public/assets/js/custom.js"></script>
+    <script src="../viewscripts/classroom-details/classroom_details.js"></script>
+</body>
+
+</html>
