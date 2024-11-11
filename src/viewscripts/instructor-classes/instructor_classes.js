@@ -1,6 +1,6 @@
 const fetchInstructorClasses = async (session) => {
     try {
-        const response = await fetch(`http://192.168.56.1:8000/api/instructors/${session?.user?.id}/classes`, {
+        const response = await fetch(`https://e-learn.godesqsites.com/api/instructors/${session?.user?.id}/classes`, {
             headers: {
                 'Accept': 'application/json',
                 'Authorization': `Bearer ${session?.token}`,

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instructor Classes</title>
+    <title>Instructor Analytics</title>
 
     <link rel="stylesheet" href="../../public/assets/vendor/fonts/boxicons.css" />
     <link rel="stylesheet" href="../../public/assets/vendor/css/core.css">
@@ -19,10 +19,10 @@
 </head>
 
 <body class="bg-white">
-    <div class="container-fluid my-3">
+    <div class="container-fluid my-3 bg-white">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="#">
                     <img src="../../public/assets/img/cdm-logo.png" alt="" style="width: 50px;">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -52,6 +52,40 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
+                                <a class="dropdown-item" href="#">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0 me-3">
+                                            <div class="avatar avatar-online">
+                                                <img src="../../public/assets/img/avatars/1.png" alt
+                                                    class="w-px-40 h-auto rounded-circle" />
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <span class="fw-semibold d-block">John Doe</span>
+                                            <small class="text-muted">Admin</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="bx bx-user me-2"></i>
+                                    <span class="align-middle">My Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="bx bx-cog me-2"></i>
+                                    <span class="align-middle">Settings</span>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
+                            <li>
                                 <a id="logout-btn" class="dropdown-item" href="#">
                                     <i class="bx bx-power-off me-2"></i>
                                     <span class="align-middle">Log Out</span>
@@ -62,12 +96,6 @@
                 </div>
             </div>
         </nav>
-
-        <div class="my-3">
-            <h2>Classes</h2>
-            <div class="row classes-container"></div>
-        </div>
-
     </div>
 
     <!-- You can also require other files to run in this process -->
@@ -81,11 +109,11 @@
     <!-- endbuild -->
 
     <!-- Vendors JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <!-- Main JS -->
     <script src="../../public/assets/js/main.js"></script>
     <script src="../../public/assets/js/custom.js"></script>
-    <script src="../viewscripts/instructor-classes/instructor_classes.js"></script>
 </body>
 
 </html>

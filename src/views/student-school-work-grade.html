@@ -41,7 +41,7 @@
                             <a class="nav-link" href="instructor-classes.html">Classes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="instructor-reports.html">Reports</a>
+                            <a class="nav-link" href="instructor-reports.html">Analytics</a>
                         </li>
                     </ul>
                     <div class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -53,40 +53,6 @@
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    <div class="d-flex">
-                                        <div class="flex-shrink-0 me-3">
-                                            <div class="avatar avatar-online">
-                                                <img src="../../public/assets/img/avatars/1.png" alt
-                                                    class="w-px-40 h-auto rounded-circle" />
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <span class="fw-semibold d-block">John Doe</span>
-                                            <small class="text-muted">Admin</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <div class="dropdown-divider"></div>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    <i class="bx bx-user me-2"></i>
-                                    <span class="align-middle">My Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    <i class="bx bx-cog me-2"></i>
-                                    <span class="align-middle">Settings</span>
-                                </a>
-                            </li>
-                            <li>
-                                <div class="dropdown-divider"></div>
-                            </li>
                             <li>
                                 <a id="logout-btn" class="dropdown-item" href="#">
                                     <i class="bx bx-power-off me-2"></i>
@@ -139,6 +105,7 @@
 
         <div class="card">
             <div class="card-body">
+                <input type="hidden" id="school-work-grades-id">
                 <table class="table table-bordered table-striped text-wrap w-100">
                     <thead>
                         <tr>
@@ -147,13 +114,13 @@
                             <th>Rubric Percentage</th>
                             <th width="30">Total of Submitted Works</th>
                             <th>Actions</th>
-
                         </tr>
                     </thead>
                     <tbody id="grades-table">
 
                     </tbody>
                 </table>
+                <button class="btn btn-primary mt-3" id="submit-grade-btn">Submit & Compute Final Grade</button>
             </div>
         </div>
     </div>
@@ -219,19 +186,20 @@
         })
 
         async function fetchGrades() {
-            const response = await fetch(`http://192.168.56.1:8000/api/students/${studentId}/classes/${classId}/school-work-grades`, {
+            const response = await fetch(`https://e-learn.godesqsites.com/api/students/${studentId}/classes/${classId}/school-work-grades`, {
                 headers: {
                     'Accept': 'application/json',
                     'Authorization': `Bearer ${session?.token}`,
                 }
             });
             const data = await response.json();
+            $('#school-work-grades-id').val(data.school_work_grades.id);
             displaySchoolWorkGrades(data);
         }
 
         const fetchClassStudentSchoolWorks = async (type) => {
 
-            const response = await fetch(`http://192.168.56.1:8000/api/classes/${classId}/students/${studentId}/school-works?type=${type}`, {
+            const response = await fetch(`https://e-learn.godesqsites.com/api/classes/${classId}/students/${studentId}/school-works?type=${type}`, {
                 headers: {
                     'Accept': 'application/json',
                     'Authorization': `Bearer ${session?.token}`,
@@ -336,18 +304,48 @@
             fetchClassStudentSchoolWorks(dataType);
         })
 
+        $("#submit-grade-btn").click(async function (e) {
+            const session = JSON.parse(localStorage.getItem('session'));
+            // const school_works_grade_id = $('#school-work-grades-id').val();
+
+            try {
+                let data = {
+                    class_id: classId,
+                    student_id: studentId,
+                }
+
+                const response = await fetch(`https://e-learn.godesqsites.com/api/student-school-works/submit-final-grade`, {
+                    method: "POST",
+                    headers: {
+                        'Accept': "application/json",
+                        'Content-Type': "application/json", // Add this line
+                        'Authorization': `Bearer ${session?.token}`,
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    toastr.success("Scores submitted successfully.");
+                } else {
+                    toastr.error("Failed to submit the scores.");
+                }
+            } catch (error) {
+                toastr.error("Something went wrong when submitting the scores.");
+            }
+        });
+
+
         $('#submitted-works-form').on('submit', async function (e) {
             e.preventDefault();
             const session = JSON.parse(localStorage.getItem('session'));
             const school_work_type = document.querySelector('#school-work-type-field').value;
-
 
             try {
                 let form = new FormData(e.target);
                 form.append('student_id', studentId);
                 form.append('class_id', classId);
 
-                const response = await fetch(`http://192.168.56.1:8000/api/student-school-works/submissions-with-grade/${school_work_type}`, {
+                const response = await fetch(`https://e-learn.godesqsites.com/api/student-school-works/submissions-with-grade/${school_work_type}`, {
                     method: "POST",
                     headers: {
                         'Accept': "application/json",

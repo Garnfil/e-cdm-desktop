@@ -14,7 +14,7 @@ async function handleInstructorLogin(e) {
             password: password,
         }
 
-        const response = await fetch('http://192.168.56.1:8000/api/instructor/login', {
+        const response = await fetch('https://e-learn.godesqsites.com/api/instructor/login', {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
