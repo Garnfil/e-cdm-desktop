@@ -40,9 +40,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="instructor-classes.html">Classes</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="instructor-reports.html">Analytics</a>
-                        </li>
+
                     </ul>
                     <div class="nav-item navbar-dropdown dropdown-user dropdown">
                         <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
@@ -137,7 +135,6 @@
                     </div>
                     <div class="modal-body">
                         <div class="row g-2" id="school-works-fieldset">
-
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -214,9 +211,10 @@
 
             const schoolWorkFieldSet = document.querySelector('#school-works-fieldset');
             let output = "";
-            data.school_works.forEach((school_work, index) => {
-                const studentSubmission = data.student_submissions.find(submission => submission.school_work_id == school_work.id);
-                output += `<div class="col-lg-4 mb-3">
+            if (data.school_works.length > 0) {
+                data.school_works.forEach((school_work, index) => {
+                    const studentSubmission = data.student_submissions.find(submission => submission.school_work_id == school_work.id);
+                    output += `<div class="col-lg-4 mb-3">
                                 <label for="emailLarge" class="form-label">${school_work.title}</label>
                                 <input type="hidden" name="submissions[${index}][school_work_id]" value="${school_work.id}" />
                                 <div class="input-group">
@@ -224,7 +222,11 @@
                                     <span class="input-group-text">/ ${school_work.points}</span>
                                 </div>
                             </div>`;
-            });
+                });
+            } else {
+                output = "<div class='text-center'>No School Work Found</div>"
+            }
+
 
             schoolWorkFieldSet.innerHTML = output;
         }
