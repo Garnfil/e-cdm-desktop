@@ -1,7 +1,7 @@
 const fetchClassRoomDetails = async (class_id) => {
     try {
         const session = JSON.parse(localStorage.getItem('session'));
-        const response = await fetch(`https://e-learn.godesqsites.com/api/classes/${class_id}`, {
+        const response = await fetch(`https://my-cdm.godesqsites.com/api/classes/${class_id}`, {
             headers: {
                 'Accept': 'application/json',
                 'Authorization': `Bearer ${session?.token}`,
@@ -19,7 +19,7 @@ const fetchClassRoomDetails = async (class_id) => {
 
 const fetchClassStudents = async (class_id) => {
     const session = JSON.parse(localStorage.getItem('session'));
-    const response = await fetch(`https://e-learn.godesqsites.com/api/classes/${class_id}/students`, {
+    const response = await fetch(`https://my-cdm.godesqsites.com/api/classes/${class_id}/students`, {
         headers: {
             'Accept': 'application/json',
             'Authorization': `Bearer ${session?.token}`,

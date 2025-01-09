@@ -183,20 +183,21 @@
         })
 
         async function fetchGrades() {
-            const response = await fetch(`https://e-learn.godesqsites.com/api/students/${studentId}/classes/${classId}/school-work-grades`, {
+            const response = await fetch(`https://my-cdm.godesqsites.com/api/students/${studentId}/classes/${classId}/school-work-grades`, {
                 headers: {
                     'Accept': 'application/json',
                     'Authorization': `Bearer ${session?.token}`,
                 }
             });
             const data = await response.json();
+            console.log(response);
             $('#school-work-grades-id').val(data.school_work_grades.id);
             displaySchoolWorkGrades(data);
         }
 
         const fetchClassStudentSchoolWorks = async (type) => {
 
-            const response = await fetch(`https://e-learn.godesqsites.com/api/classes/${classId}/students/${studentId}/school-works?type=${type}`, {
+            const response = await fetch(`https://my-cdm.godesqsites.com/api/classes/${classId}/students/${studentId}/school-works?type=${type}`, {
                 headers: {
                     'Accept': 'application/json',
                     'Authorization': `Bearer ${session?.token}`,
@@ -316,7 +317,7 @@
                     student_id: studentId,
                 }
 
-                const response = await fetch(`https://e-learn.godesqsites.com/api/student-school-works/submit-final-grade`, {
+                const response = await fetch(`https://my-cdm.godesqsites.com/api/student-school-works/submit-final-grade`, {
                     method: "POST",
                     headers: {
                         'Accept': "application/json",
@@ -347,7 +348,7 @@
                 form.append('student_id', studentId);
                 form.append('class_id', classId);
 
-                const response = await fetch(`https://e-learn.godesqsites.com/api/student-school-works/submissions-with-grade/${school_work_type}`, {
+                const response = await fetch(`https://my-cdm.godesqsites.com/api/student-school-works/submissions-with-grade/${school_work_type}`, {
                     method: "POST",
                     headers: {
                         'Accept': "application/json",
